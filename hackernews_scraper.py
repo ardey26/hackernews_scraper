@@ -1,7 +1,6 @@
 from bs4 import BeautifulSoup
 import requests
 from datetime import datetime
-from collections import OrderedDict
 
 def start(results):
     news_dict = {}
