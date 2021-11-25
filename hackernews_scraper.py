@@ -27,14 +27,14 @@ def start(results):
             comments = f"item?id={j}"
             k1 = news_score[i].find("span", class_ = "rank").text[:-1] # news rank
             k2 = news_score[i].find("a", class_ = "titlelink").text # news title
+            k41 = z.find_all(href = comments) 
             try:
                 k3 = z.find(id = score).text # Score by id
                 k3 = int(k3.split(" ")[0])
             except AttributeError:
                 k3 = 0
-            k41 = z.find_all(href = comments) 
             try:
-                k4 = int(k41[0].text.split(" ")[0]) # Time Posted
+                k4 = news_subtext[i].find("span", class_ = "age")["title"][11:] # Time Posted
             except ValueError:
                 k4 = 0
 
@@ -56,6 +56,7 @@ def sort_by_points(dict_param):
         print("Title:", points_sorted_dict[i][1])
         print("Points:", points_sorted_dict[i][2])
         print("Comments:", points_sorted_dict[i][4])
+        print("Time: ", points_sorted_dict[i][3])
         print("Date:", points_sorted_dict[i][5])
         print("=" * 80)
         j += 1
@@ -68,6 +69,7 @@ def sort_by_comment(dict_param):
         print("Title:", comments_sorted_dict[z][1])
         print("Points:", comments_sorted_dict[z][2])
         print("Comments:", comments_sorted_dict[z][4])
+        print("Time: ", comments_sorted_dict[z][3])
         print("Date:", comments_sorted_dict[z][5])
         print("=" * 80)
         j += 1
@@ -79,6 +81,7 @@ def sort_by_default(dict_param):
         print("Title:", dict_param[z][1])
         print("Points:", dict_param[z][2])
         print("Comments:", dict_param[z][4])
+        print("Time: ", dict_param[z][3])
         print("Date:", dict_param[z][5])
         print("=" * 80)
         j += 1
@@ -91,6 +94,7 @@ def sort_by_newest(dict_param):
         print("Title:", newest_sorted_dict[z][1])
         print("Points:", newest_sorted_dict[z][2])
         print("Comments:", newest_sorted_dict[z][4])
+        print("Time: ", newest_sorted_dict[z][3])
         print("Date:", newest_sorted_dict[z][5])
         print("=" * 80)
         j += 1
@@ -103,6 +107,7 @@ def sort_by_oldest(dict_param):
         print("Title:", oldest_sorted_dict[z][1])
         print("Points:", oldest_sorted_dict[z][2])
         print("Comments:", oldest_sorted_dict[z][4])
+        print("Time: ", oldest_sorted_dict[z][3])
         print("Date:", oldest_sorted_dict[z][5])
         print("=" * 80)
         j += 1
