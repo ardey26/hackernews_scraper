@@ -12,7 +12,6 @@ def start(results):
     result_per_page.append(results)
         
     page = 1
-    page1 = 0
     while(page != len(result_per_page) + 1):
         url = f"https://news.ycombinator.com/news?p={page}"
         r = requests.get(url)
@@ -44,7 +43,6 @@ def start(results):
                 k5 = 0
             k6 = news_subtext[i].find("span", class_ = "age")["title"][:-9]
             news_dict[j] = [k1, k2, k3, k4, k5, k6]
-            page1 += 1
         page += 1
     return news_dict
 
