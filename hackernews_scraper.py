@@ -112,17 +112,10 @@ if __name__ == "__main__":
     results_dict = start(amount)
 
     choice = int(input("[1] - SORT BY POINTS | [2] - SORT BY COMMENT | [3] - DEFAULT | [4] - NEWEST | [5] - OLDEST: "))
-    if choice == 1:
-        sort_by_points(results_dict)
 
-    elif choice == 2:
-        sort_by_comment(results_dict)
+    choice -= 1
+    choice_handlers = [sort_by_points, sort_by_comment, sort_by_default, sort_by_newest, sort_by_oldest]
 
-    elif choice == 3:
-        sort_by_default(results_dict)
+    chosen_choice_handler = choice_handlers[choice]
 
-    elif choice == 4:
-        sort_by_newest(results_dict)
-
-    elif choice == 5:
-        sort_by_oldest(results_dict)
+    return chosen_choice_handler(results_dict)    
